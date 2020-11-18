@@ -35,5 +35,18 @@ node {
         sh "docker rmi $registry:$BUILD_NUMBER --force"
         sh "docker rmi $registry:latest --force"
     }
-   
+    post {
+       // only triggered when blue or green sign
+       success {
+           slackSend ...
+       }
+       // triggered when red sign
+       failure {
+           slackSend ...
+       }
+       // trigger every-works
+       always {
+           slackSend ...
+       }
+    }
 }
