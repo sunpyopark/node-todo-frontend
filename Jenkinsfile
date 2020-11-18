@@ -31,7 +31,7 @@ node {
 	}
     stage('Removing image') {
         sh "docker rmi $registry:$BUILD_NUMBER --force"
-        sh "docker rmi $registry:latest"
+        sh "docker rmi $registry:latest --force"
     }
     
 }
