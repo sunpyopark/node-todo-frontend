@@ -35,19 +35,6 @@ node {
             sh "docker rmi $registry:$BUILD_NUMBER --force"
             sh "docker rmi $registry:latest --force"
         }
-	post {
-       
-       success {
-           slackSend ...
-       }
-       
-       failure {
-           slackSend ...
-       }
-       
-       always {
-           slackSend ...
-       }
-}
+
     
 }
