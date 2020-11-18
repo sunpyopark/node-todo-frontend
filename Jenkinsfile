@@ -4,7 +4,7 @@ node {
 
     env.AWS_ECR_LOGIN=true
     def newApp
-    def registry = 'krandmm/microservices-node-todo-frontends'
+    def registry = 'krandmm/microservices-node-todo-frontend'
     def registryCredential = 'docker-hub'
 	
 	stage('Git') {
