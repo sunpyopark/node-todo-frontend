@@ -26,7 +26,7 @@ node {
 	
 	stage('Registring image') {
         docker.withRegistry('https://registry.hub.docker.com', registryCredential ) {
-    		newApp.push 'latest2'
+    		newApp.push 'latest'
         }
 	}
     stage('Removing image') {
