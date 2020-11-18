@@ -31,9 +31,23 @@ node {
     		newApp.push 'latest'
         }
 	}
-    stage('Removing image') {
-        sh "docker rmi $registry:$BUILD_NUMBER --force"
-        sh "docker rmi $registry:latest --force"
-    }
+        stage('Removing image') {
+            sh "docker rmi $registry:$BUILD_NUMBER --force"
+            sh "docker rmi $registry:latest --force"
+        }
+	post {
+       
+       success {
+           slackSend ...
+       }
+       
+       failure {
+           slackSend ...
+       }
+       
+       always {
+           slackSend ...
+       }
+}
     
 }
