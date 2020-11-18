@@ -1,6 +1,8 @@
 node {
     
-	
+    environment {
+        SLACK_CHANNEL = '#jenkins-ci'
+    }	
 
     env.AWS_ECR_LOGIN=true
     def newApp
@@ -32,6 +34,14 @@ node {
     stage('Removing image') {
         sh "docker rmi $registry:$BUILD_NUMBER --force"
         sh "docker rmi $registry:latest --force"
+    }
+    post {
+        success {
+            slackSend (channel: SLACK_CHANNEL, color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        }
+        failure {
+            slackSend (channel: SLACK_CHANNEL, color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        }
     }
     
 }
