@@ -35,4 +35,7 @@ node {
             sh "docker rmi $registry:$BUILD_NUMBER --force"
             sh "docker rmi $registry:latest --force"
         }
+	stage("speak") {
+        slackSend color: '#BADA55', message: 'Hello, World!'
+        }
 }
