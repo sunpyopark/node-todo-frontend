@@ -17,7 +17,7 @@ var moment = require('moment');
 var port = process.env.PORT || 3000;
 
 function handleRequest (request, response) {
-  response.end('[' + hostname + '] Serving requests from myapp SubServe nodejs-coreapp:v0.1.8. Request URL:' + request.url);
+  response.end('[' + hostname + '] Serving requests from myapp SubServe microservices-node-todo-frontend:v0.1.36. Request URL:' + request.url);
 }
 
 var server = http.createServer(handleRequest);
